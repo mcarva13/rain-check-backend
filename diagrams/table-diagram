@@ -1,0 +1,17 @@
+// Use DBML to define your database structure
+// URL: https://dbdiagram.io/d
+
+Table user {
+  id UUID [primary key]
+  username varchar(255)
+  email varchar(255)
+}
+
+Table city {
+  id UUID [primary key]
+  city_name varchar(255)
+  longitude numeric
+  latitude numeric
+}
+
+Ref: user.id - city.id
