@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/rain-check-b4f/rain-check-backend.rain-check-b4f.main.iml" filepath="$PROJECT_DIR$/.idea/modules/rain-check-b4f/rain-check-backend.rain-check-b4f.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rain-check-backend-build-logic/rain-check-backend.rain-check-backend-build-logic.main.iml" filepath="$PROJECT_DIR$/.idea/modules/rain-check-backend-build-logic/rain-check-backend.rain-check-backend-build-logic.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rain-check-backend-build-logic/rain-check-backend.rain-check-backend-build-logic.test.iml" filepath="$PROJECT_DIR$/.idea/modules/rain-check-backend-build-logic/rain-check-backend.rain-check-backend-build-logic.test.iml" />
     </modules>
   </component>
 </project>
