@@ -1,0 +1,40 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="liquibase/db.changelog.xml"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="mcarva" id="2023-11-12" labels="US1 - Init Database">
+        <comment>Create Rain Check schema </comment>
+        <sqlFile encoding="utf8" endDelimiter=";"
+                 path="db.changelog-2023-11-12-script.sql"
+                 relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+        <rollback/>
+    </changeSet>
+
+    <changeSet author="mcarva" id="2023-11-13" labels="US1 - Init Database">
+        <insert schemaName="rain_check" tableName="user">
+            <column name="id" value="8d1208fc-f401-496c-9cb8-483fef121234" />
+            <column name="user_name" value="mcarva"/>
+            <column name="email" value="mcarva@gmail.com"/>
+        </insert>
+
+        <insert schemaName="rain_check" tableName="city">
+            <column name="id" value="ea5bc0ab-6ccf-4791-a048-694a5be1d309" />
+            <column name="city_name" value="Aveiro"/>
+            <column name="latitude" value="40.64"/>
+            <column name="longitude" value="-8.65"/>
+        </insert>
+
+        <rollback>
+            <delete schemaName="rain_check" tableName="user">
+                <where>id='8d1208fc-f401-496c-9cb8-483fef121234'</where>
+            </delete>
+            <delete schemaName="rain_check" tableName="city">
+                <where>id='ea5bc0ab-6ccf-4791-a048-694a5be1d309'</where>
+            </delete>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
