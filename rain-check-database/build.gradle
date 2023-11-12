@@ -19,9 +19,7 @@ group 'rain.check.backend.app'
 version '1.0-SNAPSHOT'
 
 ext {
-    mapstructVersion = "1.5.5.Final"
     lombokVersion = "1.18.30"
-    lombokMapstructBindingVersion = "0.2.0"
 }
 
 dependencies {
@@ -36,6 +34,8 @@ dependencies {
     implementation("io.quarkus:quarkus-hibernate-orm")
     // JDBC driver dependencies
     implementation("io.quarkus:quarkus-jdbc-postgresql")
+    // Liquibase specific dependencies
+    implementation("io.quarkus:quarkus-liquibase")
 }
 
 java {

@@ -33,8 +33,8 @@ public class CityJPA {
     private String cityName;
 
     @Column(name = "longitude")
-    private String longitude;
+    private Float longitude;
 
     @Column(name = "latitude")
-    private String latitude;
+    private Float latitude;
 }
