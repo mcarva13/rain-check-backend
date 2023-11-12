@@ -5,9 +5,12 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <include file="liquibase/changelogs/db.changelog-2023-11-12.xml"/>
-    <include file="liquibase/changelogs/db.changelog-2023-11-13.xml"/>
+    <changeSet author="mcarva" id="US2-foreign-key" labels="US2 - Rain Check Service Refactor">
+        <comment>Link user with city table</comment>
+        <sqlFile encoding="utf8" endDelimiter=";"
+                 path="db.changelog-2023-11-13-script.sql"
+                 relativeToChangelogFile="true" splitStatements="true" stripComments="true"/>
+        <rollback/>
+    </changeSet>
 
 </databaseChangeLog>
-
-

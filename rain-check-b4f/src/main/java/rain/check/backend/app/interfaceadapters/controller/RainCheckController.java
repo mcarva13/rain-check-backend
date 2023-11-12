@@ -13,8 +13,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 public interface RainCheckController {
 
     @GET
-    @Path("/city")
-    Response generateWeatherReport(@QueryParam("lat") String latitude,
-                                   @QueryParam("long") String longitude);
+    @Path("/user")
+    Response generateWeatherReport(@QueryParam("id") String userId);
 
 }

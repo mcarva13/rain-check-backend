@@ -16,8 +16,8 @@ import java.util.List;
 @RegisterRestClient(configKey = "weather-service-api")
 public interface WeatherService {
 
-    static final String TIMEZONE_DEFAULT = "auto";
-    static final String FORECAST_DAYS_DEFAULT = "3";
+    String TIMEZONE_DEFAULT = "auto";
+    String FORECAST_DAYS_DEFAULT = "3";
 
     @GET
     @APIResponse(

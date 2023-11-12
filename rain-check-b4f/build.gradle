@@ -37,10 +37,13 @@ dependencies {
 
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     implementation "org.projectlombok:lombok:${lombokVersion}"
+    implementation project(path: ':rain-check-database')
 
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+
+    implementation "io.quarkus:quarkus-hibernate-orm-panache"
 }
 
 java {
@@ -59,4 +62,10 @@ compileJava {
 
 compileTestJava {
     options.encoding = 'UTF-8'
+}
+
+quarkusDev {
+    doFirst {
+        System.setProperty("debug", "5010") // APP1 debug port
+    }
 }

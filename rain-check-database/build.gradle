@@ -26,12 +26,13 @@ dependencies {
     implementation 'org.apache.commons:commons-text'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     testImplementation 'io.quarkus:quarkus-junit5'
 
     // PERSISTENCE DEPENDENCIES
     // Hibernate ORM specific dependencies
-    implementation("io.quarkus:quarkus-hibernate-orm")
+    implementation("io.quarkus:quarkus-hibernate-orm-panache")
     // JDBC driver dependencies
     implementation("io.quarkus:quarkus-jdbc-postgresql")
     // Liquibase specific dependencies
@@ -54,5 +55,11 @@ compileJava {
 
 compileTestJava {
     options.encoding = 'UTF-8'
+}
+
+quarkusDev {
+    doFirst {
+        System.setProperty("debug", "5015") // APP1 debug port
+    }
 }
 

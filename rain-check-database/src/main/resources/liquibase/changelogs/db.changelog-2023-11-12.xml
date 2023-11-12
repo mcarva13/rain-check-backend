@@ -5,7 +5,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet author="mcarva" id="2023-11-12" labels="US1 - Init Database">
+    <changeSet author="mcarva" id="US1-init-schema" labels="US1 - Init Database">
         <comment>Create Rain Check schema </comment>
         <sqlFile encoding="utf8" endDelimiter=";"
                  path="db.changelog-2023-11-12-script.sql"
@@ -13,7 +13,7 @@
         <rollback/>
     </changeSet>
 
-    <changeSet author="mcarva" id="2023-11-13" labels="US1 - Init Database">
+    <changeSet author="mcarva" id="US1-init-data" labels="US1 - Init Database">
         <insert schemaName="rain_check" tableName="user">
             <column name="id" value="8d1208fc-f401-496c-9cb8-483fef121234" />
             <column name="user_name" value="mcarva"/>

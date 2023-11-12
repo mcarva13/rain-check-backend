@@ -202,3 +202,17 @@ irain-check-b4f/src/main/java/rain/check/backend/app/interfaceadapters/controlle
 drain-check-b4f/src/main/java/rain/check/backend/app/interfaceadapters/controller/UserController.java,2/6/261a17a131c69c6b7785e244b497d87d3597a601
 „
 Train-check-database/src/main/java/rain/check/backend/database/LiquibaseProducer.java,3/0/30e6653961d5571780d2b68c0f45d4879f611e98
+ 
+prain-check-b4f/src/main/java/rain/check/backend/app/applicationservices/implementation/RainCheckServiceImpl.java,6/4/64552802b2333dc9d90177da76657688a1034c25
+¬
+|rain-check-b4f/src/main/java/rain/check/backend/app/interfaceadapters/controller/implementation/RainCheckControllerImpl.java,d/f/dff9410bd386b8ab9fe47eb1486663740130b3d0
+†
+Vrain-check-b4f/src/main/java/rain/check/backend/app/infrastructure/WeatherService.java,3/3/33bb1b3e99a9ec0d8c66836bc5d2fbc2a88c723e
+ƒ
+Srain-check-b4f/src/main/java/rain/check/backend/app/infrastructure/UserService.java,7/d/7dba6800805a32255c3c98f936c20a5b2a426b8f
+†
+Vrain-check-b4f/src/main/java/rain/check/backend/app/infrastructure/UserRepository.java,0/d/0dde0d2f85e9a88b43a40fce7cbb961a7c6e755e
+™
+irain-check-b4f/src/main/java/rain/check/backend/app/infrastructure/implementation/UserRepositoryImpl.java,c/c/cc190bf3018d2d3f089bd4a3685d8965d86e5179
+“
+crain-check-b4f/src/main/java/rain/check/backend/app/infrastructure/assemblers/WeatherAssembler.java,5/b/5bc34d48f91e0a243a30cc2a069ac00871c37ada

@@ -1,5 +1,6 @@
 package rain.check.backend.app.interfaceadapters.controller.implementation;
 
+import jakarta.ws.rs.NotFoundException;
 import rain.check.backend.app.applicationservices.RainCheckService;
 import rain.check.backend.app.interfaceadapters.controller.RainCheckController;
 import jakarta.enterprise.context.Dependent;
@@ -20,13 +21,13 @@ public class RainCheckControllerImpl implements RainCheckController {
     @Override
     @APIResponse(
             responseCode = "200",
-            description = "Get weather from city with given latitude and longitude coordinates",
+            description = "Get weather for a specific user",
             content = @Content(
                     mediaType = MediaType.APPLICATION_JSON,
                     schema = @Schema(type = SchemaType.OBJECT, implementation = String.class)
             )
     )
-    public Response generateWeatherReport(final String latitude, final String longitude) {
-        return Response.ok(rainCheckService.checkWeatherReport(latitude,longitude)).build();
+    public Response generateWeatherReport(final String userId) {
+        return Response.ok(rainCheckService.checkWeatherReport(userId)).build();
     }
 }
