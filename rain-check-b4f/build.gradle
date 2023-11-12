@@ -41,12 +41,6 @@ dependencies {
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
-
-    // PERSISTENCE DEPENDENCIES
-    // Hibernate ORM specific dependencies
-    implementation("io.quarkus:quarkus-hibernate-orm")
-    // JDBC driver dependencies
-    implementation("io.quarkus:quarkus-jdbc-postgresql")
 }
 
 java {

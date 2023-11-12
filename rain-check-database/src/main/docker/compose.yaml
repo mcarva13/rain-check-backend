@@ -1,0 +1,14 @@
+services:
+
+  postgres:
+    image: postgres:latest
+    container_name: database
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=rain_check_db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./pgdata:/docker-entrypoint-initdb.d
+    restart: always
