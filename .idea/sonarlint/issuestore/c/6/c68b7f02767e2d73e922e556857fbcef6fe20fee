@@ -1,11 +1,0 @@
-
-]
-java:S1128";Remove this unused import 'jakarta.persistence.ForeignKey'.(É¨êÅüÿÿÿÿ8“ó¬¼1
-X
-java:S1128";Remove this unused import 'jakarta.persistence.JoinColumn'.(İçÆ•8“ó¬¼1
-H
-java:S1128"+Remove this unused import 'lombok.Builder'.(§’Ğß8“ó¬¼1
-G
-java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8“ó¬¼1
-Z
-java:S1128"=Remove this unused import 'lombok.experimental.SuperBuilder'.(àçÄÑ8“ó¬¼1
