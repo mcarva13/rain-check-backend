@@ -1,28 +1,26 @@
 package rain.check.backend.app.interfaceadapters.exceptions;
 
-import jakarta.inject.Inject;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.Provider;
-import org.jboss.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
 
-
+/**
+ * Rain-Check B4F exception mapper.
+ */
 @Provider
+@Slf4j
 public class ExceptionMapper implements jakarta.ws.rs.ext.ExceptionMapper<Exception> {
 
-    @Inject
-    Logger logger;
-
     @Override
-    public Response toResponse(Exception exception) {
+    public Response toResponse(final Exception exception) {
         return mapExceptionToResponse(exception);
     }
 
-    private Response mapExceptionToResponse(Exception exception) {
-        // Response from WebApplicationException as they are
+    private Response mapExceptionToResponse(final Exception exception) {
         if (exception instanceof WebApplicationException) {
             // Overwrite error message
-            Response originalErrorResponse = ((WebApplicationException) exception).getResponse();
+            final Response originalErrorResponse = ((WebApplicationException) exception).getResponse();
             return Response.fromResponse(originalErrorResponse)
                     .entity(exception.getMessage())
                     .build();
@@ -33,7 +31,7 @@ public class ExceptionMapper implements jakarta.ws.rs.ext.ExceptionMapper<Except
         }
         // 500 (Internal Server Error) for all other
         else {
-            logger.fatalf(exception, "[ERROR]");
+            LOGGER.info("[ERROR]", exception);
             return Response.serverError().entity("Internal Server Error. Please try later.").build();
         }
     }

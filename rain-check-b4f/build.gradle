@@ -8,6 +8,8 @@ plugins {
     id 'java'
     id 'io.quarkus'
     id 'rain.check.backend.java-application-conventions'
+    id 'jacoco'
+    //id 'checkstyle'
 }
 
 repositories {
@@ -40,6 +42,7 @@ dependencies {
     implementation project(path: ':rain-check-database')
 
     testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'org.mockito:mockito-junit-jupiter'
     testImplementation 'io.rest-assured:rest-assured'
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
 
@@ -53,6 +56,7 @@ java {
 
 test {
     systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+    finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
 compileJava {
@@ -69,3 +73,57 @@ quarkusDev {
         System.setProperty("debug", "5010") // APP1 debug port
     }
 }
+
+// ------------------------ JACOCO DEFINITIONS -----------------------------------------------------
+
+jacoco {
+    toolVersion = "0.8.11"
+    reportsDirectory = layout.buildDirectory.dir("reports/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacoco')
+    }
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
+
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['org.gradle.*']
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
+}
+
+// ------------------------ CHECKSTYLE -----------------------------------------------------
+
+// TODO
+//checkstyle {
+//    project.logger.info("${project.rootDir}")
+//    toolVersion = '10.3.3'
+//    configFile = file("${project.rootDir}/checkstyle.xml")
+//}
+//
+//checkstyleMain {
+//    source ='src/main/java'
+//}
+//checkstyleTest {
+//    source ='src/test/java'
+//}

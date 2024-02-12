@@ -23,6 +23,8 @@ ext {
 }
 
 dependencies {
+    implementation 'io.quarkus:quarkus-rest-client-jackson'
+
     implementation 'org.apache.commons:commons-text'
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation "org.projectlombok:lombok:${lombokVersion}"

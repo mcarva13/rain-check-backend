@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Weather web service entity.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

@@ -1,6 +1,5 @@
 package rain.check.backend.app.interfaceadapters.controller.implementation;
 
-import jakarta.ws.rs.NotFoundException;
 import rain.check.backend.app.applicationservices.RainCheckService;
 import rain.check.backend.app.interfaceadapters.controller.RainCheckController;
 import jakarta.enterprise.context.Dependent;
@@ -12,6 +11,9 @@ import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
+/**
+ * Rain Check controller implementation.
+ */
 @Dependent
 public class RainCheckControllerImpl implements RainCheckController {
 
