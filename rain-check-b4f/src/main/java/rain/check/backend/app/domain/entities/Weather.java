@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Weather entity.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,6 +18,6 @@ import java.util.Map;
 public class Weather {
 
     private City city;
-    private Map<String, List<String>> hourlyPrecipitation;
-    private Map<String, String> currentPrecipitation;
+    private Map<String, List<String>> hourlyWeather;
+    private Map<String, String> currentWeather;
 }
