@@ -18,7 +18,7 @@ import lombok.ToString;
 import java.util.UUID;
 
 /**
- * User Java Persistence object
+ * User Java Persistence object.
  */
 @Table(name = "user", schema = "rain_check")
 @Data

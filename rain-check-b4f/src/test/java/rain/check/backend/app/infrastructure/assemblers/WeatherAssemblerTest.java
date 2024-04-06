@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import rain.check.backend.app.domain.entities.City;
 import rain.check.backend.app.domain.entities.Weather;
 import rain.check.backend.app.infrastructure.datamodel.WeatherWS;
 

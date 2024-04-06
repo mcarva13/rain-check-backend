@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
- * User Java Persistence object
+ * City Java Persistence object.
  */
 @Table(name = "city", schema = "rain_check")
 @Data
