@@ -15,6 +15,10 @@ public interface UserRepository extends Repository {
      */
     UserJPA getUserFromDB(final String userId);
 
+    void createNewUser(final UserJPA user);
+
+    boolean userExists(String email);
+
     /**
      * Gets the City from the database that is associated with a User.
      * @param user - the {@link UserJPA} on the database.

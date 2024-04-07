@@ -1,0 +1,9 @@
+POST http://localhost:8080/raincheck/user
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userName": "Julio",
+  "email": "mARCio@cena.com",
+  "cityName": "berlin"
+}

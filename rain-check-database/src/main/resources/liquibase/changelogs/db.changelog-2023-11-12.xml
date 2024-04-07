@@ -25,6 +25,8 @@
             <column name="city_name" value="Aveiro"/>
             <column name="latitude" value="40.64"/>
             <column name="longitude" value="-8.65"/>
+            <column name="country" value="Portugal"/>
+            <column name="timezone" value="Europe/Lisbon"/>
         </insert>
 
         <rollback>

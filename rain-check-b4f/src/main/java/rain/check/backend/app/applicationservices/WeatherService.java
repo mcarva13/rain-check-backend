@@ -3,9 +3,9 @@ package rain.check.backend.app.applicationservices;
 import rain.check.backend.app.domain.entities.Weather;
 
 /**
- * Rain Check service.
+ * Weather service.
  */
-public interface RainCheckService {
+public interface WeatherService {
 
     /**
      * Check the weather report for a given user and its associated location.

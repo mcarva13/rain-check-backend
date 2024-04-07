@@ -3,11 +3,12 @@ package rain.check.backend.app.applicationservices.implementation;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-import rain.check.backend.app.applicationservices.RainCheckService;
+import rain.check.backend.app.applicationservices.WeatherService;
 import rain.check.backend.app.domain.entities.City;
 import rain.check.backend.app.domain.entities.Weather;
 import rain.check.backend.app.domain.entities.WeatherVariable;
-import rain.check.backend.app.infrastructure.WeatherService;
+import rain.check.backend.app.infrastructure.ExternalWeatherService;
+import rain.check.backend.app.infrastructure.assemblers.CityAssembler;
 import rain.check.backend.app.infrastructure.assemblers.WeatherAssembler;
 import rain.check.backend.app.infrastructure.datamodel.WeatherWS;
 import rain.check.backend.database.applicationservices.UserRepository;
@@ -17,15 +18,17 @@ import rain.check.backend.database.domain.entities.UserJPA;
 import java.util.List;
 
 /**
- * Rain Check B4F service implementation.
+ * Weather service implementation.
  */
 @Dependent
-public class RainCheckServiceImpl implements RainCheckService {
+public class WeatherServiceImpl implements WeatherService {
 
     @RestClient
-    private WeatherService weatherService;
+    private ExternalWeatherService externalWeatherService;
     @Inject
     WeatherAssembler weatherAssembler;
+    @Inject
+    CityAssembler cityAssembler;
     @Inject
     UserRepository userRepository;
 
@@ -39,14 +42,14 @@ public class RainCheckServiceImpl implements RainCheckService {
         final List<String> weatherVariables = getWeatherVariables();
 
         // 3 - Fetch from external Service
-        final WeatherWS weatherWS = weatherService
+        final WeatherWS weatherWS = externalWeatherService
                 .getWeatherForCoordinates(
                         userCity.getLatitude().toString(),
                         userCity.getLongitude().toString(),
                         weatherVariables,
                         weatherVariables,
-                        WeatherService.TIMEZONE_DEFAULT,
-                        WeatherService.FORECAST_DAYS_DEFAULT)
+                        ExternalWeatherService.TIMEZONE_DEFAULT,
+                        ExternalWeatherService.FORECAST_DAYS_DEFAULT)
                 .readEntity(WeatherWS.class);
 
         final Weather weatherReport = weatherAssembler.weatherWSToWeather(weatherWS);
@@ -65,10 +68,6 @@ public class RainCheckServiceImpl implements RainCheckService {
 
     private void enrichWeatherReportWithUserCityInfo(final Weather weatherReport,
                                                      final CityJPA userCity) {
-        weatherReport.setCity(City.builder()
-                .cityName(userCity.getCityName())
-                .latitude(String.valueOf(userCity.getLatitude()))
-                .longitude(String.valueOf(userCity.getLongitude()))
-                .build());
+        weatherReport.setCity(cityAssembler.cityJPAToCity(userCity));
     }
 }

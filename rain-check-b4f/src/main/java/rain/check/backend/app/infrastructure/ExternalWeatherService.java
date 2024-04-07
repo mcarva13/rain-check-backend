@@ -18,7 +18,7 @@ import java.util.List;
  * External weather service API.
  */
 @RegisterRestClient(configKey = "weather-service-api")
-public interface WeatherService {
+public interface ExternalWeatherService {
 
     /**
      * Timezone default value.
@@ -46,7 +46,7 @@ public interface WeatherService {
             description = "Get weather attribute for coordinates",
             content = @Content(
                     mediaType = MediaType.APPLICATION_JSON,
-                    schema = @Schema(type = SchemaType.OBJECT, implementation = WeatherService.class)
+                    schema = @Schema(type = SchemaType.OBJECT, implementation = WeatherWS.class)
             )
     )
     Response getWeatherForCoordinates(

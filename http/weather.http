@@ -1,0 +1,1 @@
+GET http://localhost:8080/raincheck/weather/user?id=8d1208fc-f401-496c-9cb8-483fef121234

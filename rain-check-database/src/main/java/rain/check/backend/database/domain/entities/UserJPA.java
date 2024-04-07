@@ -34,6 +34,7 @@ public class UserJPA extends PanacheEntityBase {
     private UUID id;
 
     @Column(name = "user_name")
+    @NotEmpty
     private String userName;
 
     @Column(name = "email")
@@ -42,4 +43,8 @@ public class UserJPA extends PanacheEntityBase {
 
     @OneToOne(fetch = FetchType.LAZY)
     private CityJPA city;
+
+    public static UserJPA findByEmail(final String email){
+        return find("email", email).firstResult();
+    }
 }

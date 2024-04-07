@@ -7,7 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -36,10 +38,24 @@ public class CityJPA extends PanacheEntityBase {
     private String cityName;
 
     @Column(name = "longitude")
-    @NotEmpty
+    @NotNull
     private BigDecimal longitude;
 
     @Column(name = "latitude")
-    @NotEmpty
+    @NotNull
     private BigDecimal latitude;
+
+    @Column(name = "country")
+    @NotEmpty
+    private String country;
+
+    @Column(name = "timezone")
+    @NotEmpty
+    private String timezone;
+
+    public static CityJPA findByName(String name){
+        String searchInput = "%" + name + "%";
+
+        return find("lower(cityName) like concat('%', lower(?1), '%')", searchInput).firstResult();
+    }
 }

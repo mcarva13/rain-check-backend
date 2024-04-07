@@ -1,7 +1,9 @@
 package rain.check.backend.app.interfaceadapters.controller.implementation;
 
-import rain.check.backend.app.applicationservices.RainCheckService;
-import rain.check.backend.app.interfaceadapters.controller.RainCheckController;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.Produces;
+import rain.check.backend.app.applicationservices.WeatherService;
+import rain.check.backend.app.interfaceadapters.controller.WeatherController;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.MediaType;
@@ -12,13 +14,15 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 /**
- * Rain Check controller implementation.
+ * Weather controller implementation.
  */
 @Dependent
-public class RainCheckControllerImpl implements RainCheckController {
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class WeatherControllerImpl implements WeatherController {
 
     @Inject
-    private RainCheckService rainCheckService;
+    private WeatherService weatherService;
 
     @Override
     @APIResponse(
@@ -30,6 +34,6 @@ public class RainCheckControllerImpl implements RainCheckController {
             )
     )
     public Response generateWeatherReport(final String userId) {
-        return Response.ok(rainCheckService.checkWeatherReport(userId)).build();
+        return Response.ok(weatherService.checkWeatherReport(userId)).build();
     }
 }

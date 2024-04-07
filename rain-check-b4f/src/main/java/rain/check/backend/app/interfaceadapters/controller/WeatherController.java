@@ -8,12 +8,12 @@ import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 /**
- * Rain Check service controller.
+ * Weather controller.
  */
-@Path("/raincheck")
+@Path("/weather")
 @RegisterRestClient
 @RequestScoped
-public interface RainCheckController {
+public interface WeatherController {
 
     /**
      * Generate a weather report for a given user on the database.

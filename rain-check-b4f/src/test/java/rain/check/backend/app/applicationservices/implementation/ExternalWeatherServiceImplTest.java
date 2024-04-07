@@ -1,5 +1,6 @@
 package rain.check.backend.app.applicationservices.implementation;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,7 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import rain.check.backend.app.domain.entities.Weather;
-import rain.check.backend.app.infrastructure.WeatherService;
+import rain.check.backend.app.infrastructure.ExternalWeatherService;
+import rain.check.backend.app.infrastructure.assemblers.CityAssembler;
 import rain.check.backend.app.infrastructure.assemblers.WeatherAssembler;
 import rain.check.backend.app.infrastructure.datamodel.WeatherWS;
 import rain.check.backend.database.applicationservices.UserRepository;
@@ -23,10 +25,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class RainCheckServiceImplTest {
+class ExternalWeatherServiceImplTest {
 
     @Mock
-    WeatherService weatherService;
+    ExternalWeatherService externalWeatherService;
 
     @Mock
     WeatherAssembler weatherAssembler;
@@ -34,8 +36,11 @@ class RainCheckServiceImplTest {
     @Mock
     UserRepository userRepository;
 
+    @Mock
+    CityAssembler cityAssembler;
+
     @InjectMocks
-    RainCheckServiceImpl rainCheckService;
+    WeatherServiceImpl weatherService;
 
     private final static UUID USER_UUID = UUID.randomUUID();
 
@@ -54,14 +59,14 @@ class RainCheckServiceImplTest {
         when(mockCity.getLatitude()).thenReturn(BigDecimal.ONE);
         when(mockCity.getLongitude()).thenReturn(BigDecimal.ONE);
 
-        when(weatherService.getWeatherForCoordinates(any(),any(),any(),any(),any(),any()))
+        when(externalWeatherService.getWeatherForCoordinates(any(),any(),any(),any(),any(),any()))
                 .thenReturn(mockResponse);
         when(mockResponse.readEntity(WeatherWS.class)).thenReturn(weatherWS);
 
         when(weatherAssembler.weatherWSToWeather(weatherWS)).thenReturn(mockWeather);
 
         // Act
-        final Weather result = rainCheckService.checkWeatherReport(USER_UUID.toString());
+        final Weather result = weatherService.checkWeatherReport(USER_UUID.toString());
 
         // Assert
         assertEquals(mockWeather, result);

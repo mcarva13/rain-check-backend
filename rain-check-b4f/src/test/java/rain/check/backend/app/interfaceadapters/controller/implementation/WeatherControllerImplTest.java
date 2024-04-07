@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import rain.check.backend.app.applicationservices.RainCheckService;
+import rain.check.backend.app.applicationservices.WeatherService;
 import rain.check.backend.app.domain.entities.Weather;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,20 +16,20 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class RainCheckControllerImplTest {
+class WeatherControllerImplTest {
 
     @InjectMocks
-    private RainCheckControllerImpl rainCheckController;
+    private WeatherControllerImpl rainCheckController;
 
     @Mock
-    private RainCheckService rainCheckService;
+    private WeatherService weatherService;
 
     @Test
     void generateWeatherReportTest() {
         // Arrange
         final Weather mockServiceResponse = mock(Weather.class);
 
-        when(rainCheckService.checkWeatherReport(anyString())).thenReturn(mockServiceResponse);
+        when(weatherService.checkWeatherReport(anyString())).thenReturn(mockServiceResponse);
 
         // Act
         final Response actualResponse = rainCheckController.generateWeatherReport("someID");
